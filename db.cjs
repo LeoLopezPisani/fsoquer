@@ -32,8 +32,13 @@ const getTemplates = (callback) => {
 };
 
 // Function to get templates by a filter
-const getTemplateByFilter = (filter, value, callback) => {
-    const query = `SELECT * FROM templates WHERE ${filter} = ?`;
+const getAllByFilter = (filter, value, table = null, groupby = null, callback) => {
+    let query = `SELECT * FROM ${table ? table : "templates"} WHERE ${filter} = ?`;
+    
+    if (groupby) {
+      query += ` GROUP BY ${groupby}`;
+    }
+
     db.all(query, [value], (err, rows) => {
       if (err) {
         return callback(err, null);
@@ -42,7 +47,7 @@ const getTemplateByFilter = (filter, value, callback) => {
     });
   };
 
-  const getDatesByFilter = (filters, table, sortColumn = null, sortDirection = 'ASC', limit = 0, callback) => {
+const getDataByFilter = (filters, table, sortColumn = null, sortDirection = 'ASC', limit = 0, distinct = false, groupby = null, column = null,callback) => {
     // Build the conditions array based on the filters and operators
     const conditions = filters.map((filter, index) => {
       const { column, operator, value } = filter;
@@ -52,7 +57,7 @@ const getTemplateByFilter = (filter, value, callback) => {
         case 'BETWEEN':
           return `${column} BETWEEN ? AND ?`;  // For BETWEEN operator
         case 'LIKE':
-          return `${column} LIKE ?`;  // For LIKE operator
+          return `${column} LIKE ? COLLATE NOCASE`;  // For LIKE operator
         case '>':
         case '<':
         case '>=':
@@ -73,8 +78,12 @@ const getTemplateByFilter = (filter, value, callback) => {
     });
   
     // Construct the base query with the conditions
-    let query = `SELECT * FROM ${table} WHERE ${conditions}`;
+    let query = `SELECT ${distinct ? "DISTINCT" : ""} ${column ? column : "*"} FROM ${table} WHERE ${conditions}`;
   
+    if (groupby) {
+      query += ` GROUP BY ${groupby}`;
+    }
+
     // If a sortColumn is provided, add the ORDER BY clause
     if (sortColumn) {
       // Sanitize sort direction to ensure it's either 'ASC' or 'DESC'
@@ -85,7 +94,7 @@ const getTemplateByFilter = (filter, value, callback) => {
     }
 
     if (limit > 0) {
-      query += ` LIMIT ${limit}`
+      query += ` LIMIT ${limit}`;
     }
   
     // Execute the query with the values
@@ -112,7 +121,7 @@ const closeDB = () => {
 module.exports = {
   insertTemplate,
   getTemplates,
-  getTemplateByFilter,
-  getDatesByFilter,
+  getAllByFilter,
+  getDataByFilter,
   closeDB
 };
