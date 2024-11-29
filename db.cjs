@@ -1,15 +1,15 @@
 // db.js
 
-const sqlite3 = require('sqlite3').verbose();
+const Database = require('better-sqlite3');
+const db = new Database('./fsoquer_db.db');
 
-// Open or create a database
-let db = new sqlite3.Database('./fsoquer_db.db', (err) => {
-  if (err) {
-    console.error('Error opening database:', err.message);
-  } else {
-    console.log('Connected to the SQLite database.');
-  }
-});
+// Función para normalizar los textos (eliminar acentos)
+const removeAccents = (str) => {
+  str = str.toLowerCase();
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
+
+db.function('remove_accents', removeAccents);
 
 // Function to insert a new template
 const insertTemplate = (nid, description, type, body, options, callback) => {
@@ -32,22 +32,31 @@ const getTemplates = (callback) => {
 };
 
 // Function to get templates by a filter
-const getAllByFilter = (filter, value, table = null, groupby = null, callback) => {
-    let query = `SELECT * FROM ${table ? table : "templates"} WHERE ${filter} = ?`;
+const getAllByFilter = (filter, value, table = "templates", groupby = null) => {
+  if (!Array.isArray(value)) {
+      value = [value];  // Asegúrate de que 'value' sea un array
+  }
+
+  // Construir la consulta base
+  let query = `SELECT * FROM ${table} WHERE ${filter} = ?`;
+  
+  // Si se proporciona 'groupby', agregar la cláusula GROUP BY
+  if (groupby) {
+    query += ` GROUP BY ${groupby}`;
+  }
+
+  try {
+    const rows = db.prepare(query).all(...value);
     
-    if (groupby) {
-      query += ` GROUP BY ${groupby}`;
-    }
+    return rows;
+  } catch (err) {
+    // En caso de error, manejar la excepción y mostrar un mensaje
+    console.error('Error executing query:', err);
+    throw err;
+  }
+};
 
-    db.all(query, [value], (err, rows) => {
-      if (err) {
-        return callback(err, null);
-      }
-      callback(null, rows);
-    });
-  };
-
-const getDataByFilter = (filters, table, sortColumn = null, sortDirection = 'ASC', limit = 0, distinct = false, groupby = null, column = null,callback) => {
+  const getDataByFilter = (filters, table, sortColumn = null, sortDirection = 'ASC', limit = 0, distinct = false, groupby = null, column = null) => {
     // Build the conditions array based on the filters and operators
     const conditions = filters.map((filter, index) => {
       const { column, operator, value } = filter;
@@ -57,7 +66,7 @@ const getDataByFilter = (filters, table, sortColumn = null, sortDirection = 'ASC
         case 'BETWEEN':
           return `${column} BETWEEN ? AND ?`;  // For BETWEEN operator
         case 'LIKE':
-          return `${column} LIKE ? COLLATE NOCASE`;  // For LIKE operator
+          return `remove_accents(${column}) LIKE ? COLLATE NOCASE`;  // For LIKE operator
         case '>':
         case '<':
         case '>=':
@@ -96,16 +105,19 @@ const getDataByFilter = (filters, table, sortColumn = null, sortDirection = 'ASC
     if (limit > 0) {
       query += ` LIMIT ${limit}`;
     }
-  
-    // Execute the query with the values
-    db.all(query, queryValues, (err, rows) => {
-      if (err) {
-        return callback(err, null);
-      }
-      callback(null, rows);
-    });
-  };
 
+    try {
+      // Ejecutamos la consulta sincrónica
+      const rows = db.prepare(query).all(...queryValues);
+
+      // Devuelves los resultados, ya que ahora todo es sincrónico
+      return rows;
+    } catch (err) {
+      // En caso de error, lanzar una excepción (o manejarla como desees)
+      console.error(err);
+      throw err;
+    }
+};
 // Function to close the database connection
 const closeDB = () => {
   db.close((err) => {
