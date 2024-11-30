@@ -34,7 +34,7 @@ var dateFormats = {
   month: "long"
 };
 const jokesArr = ["¿Sabés qué es un terapeuta?\n\n\n1024 gigapeutas.",
-  "¿Qué pasa cuando se tiende a infinito?\n\n\nSe seca!",
+  "¿Qué pasa cuando se tiende a infinito?\n\n\n¡Se seca!",
   "¿Por qué un fotón no puede hacer una pizza?\n\n\nPorque no tiene masa.",
   "Me sacaron del grupo de WhatsApp de paracaidismo. Se ve que no caía bien.",
   "¿Qué le dice un jardinero a otro?\n\n\nSeamos felices mientras podamos.",
@@ -55,7 +55,6 @@ app.post("/", async (req, res) => {
   const business_phone_number_id =
     req.body.entry?.[0].changes?.[0].value?.metadata?.phone_number_id;
 
-  // check if the incoming message contains text | TO DO: ESTE IF DEBERÍA EJECUTARSE EN UNA LLAMADA A LAS FUNCIONES ESTÁNDAR QUE CREAMOS
   if (type === "text") {
     const numStr = message?.from.toString();
     let numFiltered = numStr.replace("9", "");
@@ -70,13 +69,17 @@ app.post("/", async (req, res) => {
           break;
         };
 
-        if(msg.length < 4) {
-          var txt = "Por favor, ingresá una palabra clave con por lo menos 3 caracteres.\nSino es difícil para mí ser precis@ con la búsqueda."
+        if(msg.length < 3) {
+          var txt = "Ingresá una palabra clave con al menos 3 caracteres.\nSino es difícil para mí ser precis@ con la búsqueda."
           SendTextMessage(txt, +numFiltered, business_phone_number_id).then(() => {
-            txt = "¿Querés agregar algún otro filtro? Sino elegí Continuar";
-            var opt = ["211","212","214","215","216","217"];
-            SendListMessage(txt, opt, +numFiltered, business_phone_number_id, "templates");
+            // txt = "¿Querés agregar algún otro filtro? Sino elegí Continuar";
+            // var opt = ["211","212","214","216","217"];
+            // SendListMessage(txt, opt, +numFiltered, business_phone_number_id, "templates");
+            // lastTypeSent = "list";
+            // lastBodySent = txt;
+            // lastOptionsSent = opt;
           });
+          break;
         }
 
         var f = [];
@@ -101,15 +104,19 @@ app.post("/", async (req, res) => {
                 globalFilter.splice(i, 1);
                 resolve();
               });
+            } else {
+              resolve();
             }
-            resolve();
           });
 
           p.then(() => {
             globalFilter.push(obj);
             txt = "¿Querés agregar algún otro filtro? Sino elegí Continuar";
-            var opt = ["211","212","214","215","216","217"];
+            var opt = ["211","212","214","216","217"];
             SendListMessage(txt, opt, +numFiltered, business_phone_number_id, "templates");
+            lastTypeSent = "list";
+            lastBodySent = txt;
+            lastOptionsSent = opt;
           })
           break;
         }
@@ -128,8 +135,6 @@ app.post("/", async (req, res) => {
               });
               SendTextMessage(txt, +numFiltered, business_phone_number_id).then(() => {
                 lastTypeSent = "filter";
-                lastBodySent = txt;
-                lastOptionsSent = optionsArray;
               });
             }
             else if (obj.column == "catedra") {
@@ -137,10 +142,8 @@ app.post("/", async (req, res) => {
               const arr = [];
               opt.forEach(o => arr.push(o.nid));
               
-              SendListMessage("Si encontrás la cátedra que estás buscando, seleccionala!\nSino respondé con _Ninguna de estas_ y voy a intentar mostrarte más opciones", arr, +numFiltered, business_phone_number_id, "oferta_academica", "nid").then(() => {
+              SendListMessage("Si encontrás la cátedra que estás buscando ¡Seleccionala!\nSino respondé con *Ninguna de estas* y voy a intentar mostrarte más opciones", arr, +numFiltered, business_phone_number_id, "oferta_academica", "nid").then(() => {
                 lastTypeSent = "filter";
-                lastBodySent = txt;
-                lastOptionsSent = optionsArray;
               });
             }
           } 
@@ -148,8 +151,11 @@ app.post("/", async (req, res) => {
             var txt = "No encontré opciones con esa palabra clave.";
             SendTextMessage(txt, +numFiltered, business_phone_number_id).then(() => {
               txt = "¿Querés agregar algún otro filtro? Sino elegí Continuar";
-              var opt = ["211","212","214","215","216","217"];
+              var opt = ["211","212","214","216","217"];
               SendListMessage(txt, opt, +numFiltered, business_phone_number_id, "templates");
+              lastTypeSent = "list";
+              lastBodySent = txt;
+              lastOptionsSent = opt;
             });
           }
         });
@@ -168,8 +174,9 @@ app.post("/", async (req, res) => {
               globalFilter.splice(i, 1);
               resolve();
             });
+          } else {
+            resolve();
           }
-          resolve();
         });
 
         p.then(() => {
@@ -181,15 +188,18 @@ app.post("/", async (req, res) => {
 
           globalFilter.push(obj);
           txt = "¿Querés agregar algún otro filtro? Sino elegí Continuar";
-          var opt = ["211","212","214","215","216","217"];
+          var opt = ["211","212","214","216","217"];
           SendListMessage(txt, opt, +numFiltered, business_phone_number_id, "templates");
+          lastTypeSent = "list";
+          lastBodySent = txt;
+          lastOptionsSent = opt;
         });
         break;
       default:
         var txt = "";
         msg = eliminarAcentos(msg);
         if(msg.toLowerCase().includes("gracias")) {
-          txt = "De nada! Un placer ayudar a la comunidad de FSOC! <3"
+          txt = "¡De nada! Es un placer poder ayudar a la comunidad de FSOC <3"
           var p = new Promise((resolve) => {
             SendTextMessage(txt, +numFiltered, business_phone_number_id).then(() => {
               resolve();
@@ -200,8 +210,8 @@ app.post("/", async (req, res) => {
           })
           break;
         }
-        else if(msg.toLowerCase().includes("quien sos")) {
-          txt = "Soy Fsoquer! un asistente virtual para la comunidad de FSOC pensado por Carolina Pacialeo y Leonel López Pisani para su Trabajo Integrador Final.";
+        else if(msg.toLowerCase().includes("quien sos") || msg.toLowerCase().includes("como te llamas")) {
+          txt = "Soy Fsoquer. Un asistente virtual para la comunidad de FSOC pensado y desarrollado por Carolina Pacialeo y Leonel López Pisani para su Trabajo Integrador Final.\n\nPor fin se van a recibir :)";
           SendTextMessage(txt, +numFiltered, business_phone_number_id).then(() => {
             finishCom(+numFiltered, business_phone_number_id);
           });
@@ -236,275 +246,337 @@ app.post("/", async (req, res) => {
       msgId = message.interactive.button_reply.id;
     }
 
-    if(msgId == "9999") {
-      //Manejo de Ninguna de estas
-      if(optionsArray.length > 0) {
-        var opt = optionsArray.splice(0, 9);
-        const arr = [];
-        opt.forEach(o => arr.push(o.nid));
-            
-        SendListMessage("Si encontrás la cátedra que estás buscando, seleccionala!\nSino respondé con _Ninguna de estas_ y voy a intentar mostrarte más opciones", arr, +numFiltered, business_phone_number_id, "oferta_academica", "nid").then(() => {
-          lastTypeSent = "filter";
-          lastBodySent = txt;
-          lastOptionsSent = optionsArray;
-          res.sendStatus(200);
-          return;
-        });
+    if (lastOptionsSent == "Cátedra" && msgId != "217") {
+      if(msgId == "9999") {
+        //Manejo de Ninguna de estas
+        if(optionsArray.length > 0) {
+          var opt = optionsArray.splice(0, 9);
+          const arr = [];
+          opt.forEach(o => arr.push(o.nid));
+              
+          SendListMessage("Si encontrás la cátedra que estás buscando ¡Seleccionala!\nSino respondé con *Ninguna de estas* y voy a intentar mostrarte más opciones", arr, +numFiltered, business_phone_number_id, "oferta_academica", "nid").then(() => {
+            lastTypeSent = "filter";
+            lastBodySent = "catedra";
+            lastOptionsSent = optionsArray;
+            res.sendStatus(200);
+          });
+        } else {
+          var txt = "No tengo más cátedras para mostrarte. ¡Recordá que podés filtrar por otras categorías!"
+          SendTextMessage(txt, +numFiltered, business_phone_number_id).then(() => {
+            txt = "¿Querés agregar algún otro filtro? Sino elegí Continuar";
+            var opt = ["211","212","214","216","217"];
+            SendListMessage(txt, opt, +numFiltered, business_phone_number_id, "templates");
+            lastTypeSent = "list";
+            lastBodySent = txt;
+            lastOptionsSent = opt;
+          });
+        }
       } else {
-        var txt = "No tengo más cátedras para mostrarte. Recordá que podés podés filtrar por otras categorías!"
-        SendTextMessage(txt, +numFiltered, business_phone_number_id).then(() => {
-          txt = "¿Querés agregar algún otro filtro? Sino elegí Continuar";
-          var opt = ["211","212","214","215","216","217"];
-          SendListMessage(txt, opt, +numFiltered, business_phone_number_id, "templates");
-          return;
+        var i = globalFilter.findIndex(f => f.column == "catedra");
+        var p = new Promise((resolve) => {
+          if(i > -1) {
+            SendTextMessage("Ya elegiste una opción para esta categoría, será reemplazada por tu nueva elección", +numFiltered, business_phone_number_id).then(() => {
+              globalFilter.splice(i, 1);
+              resolve();
+            });
+          } else {
+            resolve();
+          }
         });
+
+        p.then(() => {
+          var obj = {
+            column: "catedra",
+            operator: "=",
+            value: message.interactive.list_reply.title
+          }
+
+          globalFilter.push(obj)
+
+          txt = "¿Querés agregar algún otro filtro? Sino elegí Continuar";
+          var opt = ["211","212","214","216","217"];
+          SendListMessage(txt, opt, +numFiltered, business_phone_number_id, "templates");
+          lastTypeSent = "list";
+          lastBodySent = txt;
+          lastOptionsSent = opt;
+        })
       }
     }
-
-    var templates = db.getAllByFilter("nid", msgId, "templates", null);
-      var template = templates[0];
-      const options = template.options != null ? template.options.split(',') : [];
-      
-      switch(template.type) {
-        case "buttons":
-          var body = formatText(template.body);
-
-          SendButtonsMessage(body, options, +numFiltered, business_phone_number_id);
-          ReadMessage(business_phone_number_id, message?.id);
-          lastTypeSent = "buttons";
-          lastBodySent = body;
-          lastOptionsSent = options;
-          break;
-        case "list":
-          var body = formatText(template.body);
-
-          SendListMessage(body, options, +numFiltered, business_phone_number_id, "templates");
-          ReadMessage(business_phone_number_id, message?.id);
-          lastTypeSent = "list";
-          lastBodySent = body;
-          lastOptionsSent = options;
-          break;
-        case "text":
-          var body = formatText(template.body);
-
-          SendTextMessage(body, +numFiltered, business_phone_number_id);
-          ReadMessage(business_phone_number_id, message?.id);
-          lastTypeSent = "text";
-          lastBodySent = body;
-          lastOptionsSent = "";
-          break;
-        case "cta":
-          var body = formatText(template.body);
-
-          SendCallToActionMessage(body, template.url, +numFiltered, business_phone_number_id).then(() => {
-            ReadMessage(business_phone_number_id, message?.id);
-            finishCom(+numFiltered, business_phone_number_id);
-          });
-          break;
-        case "prox":
-          var unixTs = Math.floor(Date.now() / 1000);
-          var filters = [
-            {
-              column: "tipo",
-              operator: "=",
-              value: template.description
-            },
-            {
-              column: "fecha_inicio",
-              operator: ">=",
-              value: unixTs
-            }
-          ];
-
-          RetrieveQueryData(filters, "fechas", "fecha_inicio", "ASC", 1).then((queryData) => {
-            if(queryData.length == 0) {
-              text = `No tengo todavía fechas próximas de ${template.description}. Podés volver a consultarme cuando quieras!`;
-            } else {
-              const data = queryData[0];
-              var inicio = new Date(data.fecha_inicio * 1000);
-              var fin = new Date(data.fecha_fin * 1000);
+    else {
+      var templates = db.getAllByFilter("nid", msgId, "templates", null);
+        var template = templates[0];
+        const options = template.options != null ? template.options.split(',') : [];
+        
+        switch(template.type) {
+          case "buttons":
+            var body = formatText(template.body);
   
-              var text = `La próxima fecha importante en términos de ${template.description} es la siguiente:\n\n ${data.descripcion}:\n\n*${inicio.toLocaleDateString("es-AR", dateFormats)}* al *${fin.toLocaleDateString("es-AR", dateFormats)}*`
-            }
+            SendButtonsMessage(body, options, +numFiltered, business_phone_number_id);
+            ReadMessage(business_phone_number_id, message?.id);
+            lastTypeSent = "buttons";
+            lastBodySent = body;
+            lastOptionsSent = options;
+            break;
+          case "list":
+            var body = formatText(template.body);
+  
+            SendListMessage(body, options, +numFiltered, business_phone_number_id, "templates");
+            ReadMessage(business_phone_number_id, message?.id);
+            lastTypeSent = "list";
+            lastBodySent = body;
+            lastOptionsSent = options;
+            break;
+          case "text":
+            var body = formatText(template.body);
 
-            SendTextMessage(text,+numFiltered, business_phone_number_id).then(() => {
-              finishCom(+numFiltered, business_phone_number_id);
-            });
-          });
-
-          ReadMessage(business_phone_number_id, message?.id);
-          break;
-        case "filter":
-          var i = globalFilter.findIndex(f => f.column == template.filter_type);
-          var p = new Promise((resolve) => {
-            if(i > -1) {
-              SendTextMessage("Ya elegiste una opción para esta categoría, será reemplazada por tu nueva elección", +numFiltered, business_phone_number_id).then(() => {
-                globalFilter.splice(i, 1);
+            if (msgId == "9") {
+              var dayTxt = " Que tengas una linda semana :)";
+              var d = new Date().toLocaleDateString("es-AR", { weekday: 'long' } );
+              switch(d) {
+                case "jueves":
+                  dayTxt = " Ánimo, ya queda poquito para el finde :) Que tengas linda semana"
+                case "viernes":
+                case "sábado":
+                  dayTxt = " Que tengas un buen fin de semana :)"
+              };
+              body += dayTxt;
+            };
+  
+            var p = new Promise((resolve) => {
+              SendTextMessage(body, +numFiltered, business_phone_number_id).then(() => {
                 resolve();
               });
-            }
-            resolve();
-          });
+            });
 
-          p.then(() => {
-            var val = template.description;
-            switch(template.description) {
-              case "Mañana":
-                val = "M";
-                break;
-              case "Tarde":
-                val = "T";
-                break;
-              case "Noche":
-                val = "N";
-                break;
-              default:
-                break;
-            };
-
-            var obj = {
-              column: template.filter_type,
-              operator: "=",
-              value: val
+            p.then(() => {
+              if(msgId != "9") {
+                finishCom(+numFiltered, business_phone_number_id);
+              };
+            });
+            ReadMessage(business_phone_number_id, message?.id);
+            lastTypeSent = "text";
+            lastBodySent = body;
+            lastOptionsSent = "";
+            break;
+          case "cta":
+            var body = formatText(template.body);
+  
+            SendCallToActionMessage(body, template.url, +numFiltered, business_phone_number_id).then(() => {
+              ReadMessage(business_phone_number_id, message?.id);
+              finishCom(+numFiltered, business_phone_number_id);
+            });
+            break;
+          case "prox":
+            var unixTs = Math.floor(Date.now() / 1000);
+            var filters = [
+              {
+                column: "tipo",
+                operator: "=",
+                value: template.description
+              },
+              {
+                column: "fecha_inicio",
+                operator: ">=",
+                value: unixTs
+              }
+            ];
+  
+            RetrieveQueryData(filters, "fechas", "fecha_inicio", "ASC", 1).then((queryData) => {
+              if(queryData.length == 0) {
+                text = `No tengo todavía fechas próximas de ${template.description}. ¡Podés volver a consultarme cuando quieras!`;
+              } else {
+                const data = queryData[0];
+                var inicio = new Date(data.fecha_inicio * 1000);
+                var fin = new Date(data.fecha_fin * 1000);
+    
+                var text = `La próxima fecha importante en términos de ${template.description} es la siguiente:\n\n ${data.descripcion}:\n\n*${inicio.toLocaleDateString("es-AR", dateFormats)}* al *${fin.toLocaleDateString("es-AR", dateFormats)}*`
+              }
+  
+              SendTextMessage(text,+numFiltered, business_phone_number_id).then(() => {
+                finishCom(+numFiltered, business_phone_number_id);
+              });
+            });
+  
+            ReadMessage(business_phone_number_id, message?.id);
+            break;
+          case "filter":
+            var i = globalFilter.findIndex(f => f.column == template.filter_type);
+            var p = new Promise((resolve) => {
+              if(i > -1) {
+                SendTextMessage("Ya elegiste una opción para esta categoría, será reemplazada por tu nueva elección", +numFiltered, business_phone_number_id).then(() => {
+                  globalFilter.splice(i, 1);
+                  resolve();
+                });
+              } else {
+                resolve();
+              }
+            });
+  
+            p.then(() => {
+              var val = template.description;
+              switch(template.description) {
+                case "Mañana":
+                  val = "M";
+                  break;
+                case "Tarde":
+                  val = "T";
+                  break;
+                case "Noche":
+                  val = "N";
+                  break;
+                default:
+                  break;
+              };
+  
+              var obj = {
+                column: template.filter_type,
+                operator: "=",
+                value: val
+              }
+    
+              globalFilter.push(obj)
+  
+              var body = formatText(template.body);
+              if (options.length > 3) {
+                SendListMessage(body, options, +numFiltered, business_phone_number_id, "templates");
+              } else {
+                SendButtonsMessage(body, options, +numFiltered, business_phone_number_id);
+              }
+            });
+            break;
+          case "continue_calendario":
+            if (globalFilter.length == 0) {
+              //TO DO: PROMESA PARA QUE EL SENDTEXT SALGA ANTES QUE EL SENDLIST
+              SendTextMessage("Recordá que para poder hacer una búsqueda tenés que indicarme las condiciones que quieras que aplique", +numFiltered, business_phone_number_id).then(() => {
+                //clean global filter
+                globalFilter = [];
+                switch(lastTypeSent) {
+                  case "list":
+                    SendListMessage(lastBodySent, lastOptionsSent, +numFiltered, business_phone_number_id, "templates");
+                    break;
+                  case "buttons":
+                    SendButtonsMessage(lastBodySent,lastOptionsSent, +numFiltered, business_phone_number_id);
+                    break;
+                }
+                ReadMessage(business_phone_number_id, message?.id);
+              });
+              break;
             }
   
-            globalFilter.push(obj)
-
+            //execute the filtering by globalFilter and send the results
+            RetrieveQueryData(globalFilter, "fechas", "fecha_inicio", "ASC").then((queryData) => {
+              var text = `No pude encontrar información para la búsqueda que hiciste. ¡Podés volver a consultarme más adelante!`;
+              if (queryData.length > 0) {
+                text = `Encontré los siguientes resultados:\n\n`;
+            
+                // Use a promise to wait for all iterations to complete
+                let promises = queryData.map((data) => {
+                  return new Promise((resolve) => {
+                    var inicio = new Date(data.fecha_inicio * 1000);
+                    var fin = new Date(data.fecha_fin * 1000);
+            
+                    var dataText = `- ${data.descripcion} -> ${inicio.toLocaleDateString("es-AR", dateFormats)} al ${fin.toLocaleDateString("es-AR", dateFormats)}\n\n`;
+                    text = text.concat(dataText); // Concatenate each result to text
+            
+                    resolve(); // Resolve the promise for each item
+                  });
+                });
+            
+                // Wait for all promises to resolve before sending the message
+                Promise.all(promises).then(() => {
+                  SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
+                    finishCom(+numFiltered, business_phone_number_id);
+                  }); // Send the message after all data is processed
+                  ReadMessage(business_phone_number_id, message?.id);
+                });
+              } else {
+                SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
+                  finishCom(+numFiltered, business_phone_number_id);
+                }); // Send the message if no data found
+                ReadMessage(business_phone_number_id, message?.id);
+              }
+            });
+            break;
+          case "like":
             var body = formatText(template.body);
-            if (options.length > 3) {
-              SendListMessage(body, options, +numFiltered, business_phone_number_id, "templates");
-            } else {
-              SendButtonsMessage(body, options, +numFiltered, business_phone_number_id);
-            }
-          });
-          break;
-        case "continue_calendario":
-          if (globalFilter.length == 0) {
-            //TO DO: PROMESA PARA QUE EL SENDTEXT SALGA ANTES QUE EL SENDLIST
-            SendTextMessage("Recordá que para poder hacer una búsqueda tenés que indicarme las condiciones que quieras que aplique!", +numFiltered, business_phone_number_id).then(() => {
-              //clean global filter
-              globalFilter = [];
-              switch(lastTypeSent) {
-                case "list":
-                  SendListMessage(lastBodySent, lastOptionsSent, +numFiltered, business_phone_number_id, "templates");
-                  break;
-                case "buttons":
-                  SendButtonsMessage(lastBodySent,lastOptionsSent, +numFiltered, business_phone_number_id);
-                  break;
-              }
-              ReadMessage(business_phone_number_id, message?.id);
-            });
+  
+            SendTextMessage(body, +numFiltered, business_phone_number_id);
+            ReadMessage(business_phone_number_id, message?.id);
+            lastTypeSent = "like";
+            lastBodySent = body;
+            lastOptionsSent = template.description;
             break;
-          }
-
-          //execute the filtering by globalFilter and send the results
-          RetrieveQueryData(globalFilter, "fechas", "fecha_inicio", "ASC").then((queryData) => {
-            var text = `No pude encontrar información para la búsqueda que hiciste. Podés volver a consultarme más adelante!`;
-            if (queryData.length > 0) {
-              text = `Encontré los siguientes resultados:\n\n`;
-          
-              // Use a promise to wait for all iterations to complete
-              let promises = queryData.map((data) => {
-                return new Promise((resolve) => {
-                  var inicio = new Date(data.fecha_inicio * 1000);
-                  var fin = new Date(data.fecha_fin * 1000);
-          
-                  var dataText = `- ${data.descripcion} -> ${inicio.toLocaleDateString("es-AR", dateFormats)} al ${fin.toLocaleDateString("es-AR", dateFormats)}\n\n`;
-                  text = text.concat(dataText); // Concatenate each result to text
-          
-                  resolve(); // Resolve the promise for each item
-                });
-              });
-          
-              // Wait for all promises to resolve before sending the message
-              Promise.all(promises).then(() => {
-                SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
-                  finishCom(+numFiltered, business_phone_number_id);
-                }); // Send the message after all data is processed
+          case "continue_oferta":
+            if (globalFilter.length == 0) {
+              //TO DO: PROMESA PARA QUE EL SENDTEXT SALGA ANTES QUE EL SENDLIST
+              SendTextMessage("Recordá que para poder hacer una búsqueda tenés que indicarme las condiciones que quieras que aplique", +numFiltered, business_phone_number_id).then(() => {
+                //clean global filter
+                globalFilter = [];
+                switch(lastTypeSent) {
+                  case "list":
+                    SendListMessage(lastBodySent, lastOptionsSent, +numFiltered, business_phone_number_id, "templates");
+                    break;
+                  case "buttons":
+                    SendButtonsMessage(lastBodySent,lastOptionsSent, +numFiltered, business_phone_number_id);
+                    break;
+                }
                 ReadMessage(business_phone_number_id, message?.id);
               });
-            } else {
-              SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
-                finishCom(+numFiltered, business_phone_number_id);
-              }); // Send the message if no data found
-              ReadMessage(business_phone_number_id, message?.id);
+              break;
             }
-          });
-          break;
-        case "like":
-          var body = formatText(template.body);
-
-          SendTextMessage(body, +numFiltered, business_phone_number_id);
-          ReadMessage(business_phone_number_id, message?.id);
-          lastTypeSent = "like";
-          lastBodySent = body;
-          lastOptionsSent = template.description;
-          break;
-        case "continue_oferta":
-          if (globalFilter.length == 0) {
-            //TO DO: PROMESA PARA QUE EL SENDTEXT SALGA ANTES QUE EL SENDLIST
-            SendTextMessage("Recordá que para poder hacer una búsqueda tenés que indicarme las condiciones que quieras que aplique!", +numFiltered, business_phone_number_id).then(() => {
-              //clean global filter
-              globalFilter = [];
-              switch(lastTypeSent) {
-                case "list":
-                  SendListMessage(lastBodySent, lastOptionsSent, +numFiltered, business_phone_number_id, "templates");
-                  break;
-                case "buttons":
-                  SendButtonsMessage(lastBodySent,lastOptionsSent, +numFiltered, business_phone_number_id);
-                  break;
-              }
-              ReadMessage(business_phone_number_id, message?.id);
-            });
-            break;
-          }
-
-          //execute the filtering by globalFilter and send the results
-          RetrieveQueryData(globalFilter, "oferta_academica", "nid", "ASC").then((queryData) => {
-            var text = `No pude encontrar información para la búsqueda que hiciste. Podés volver a consultarme más adelante!`;
-            if (queryData.length > 0) {
-              var stringArr = [];
-              text = `Encontré los siguientes resultados:\n\n`;
-          
-              // Use a promise to wait for all iterations to complete
-              let promises = queryData.map((data) => {
-                return new Promise((resolve) => {
-
-                  var matTxt = `- ${data.nid} ${data.materia}:\n`
-                  var comText = `\t${data.catedra} -> ${data.dia} de ${data.inicio} a ${data.fin} | Comisión: ${data.comision}\n\r`;
-                  
-                  if (!stringArr.includes(data.materia)) {
-                    stringArr.push(data.materia);
-                    text += matTxt;
-                  };
-
-                  text += comText;
-
-                  resolve(); // Resolve the promise for each item
+  
+            //execute the filtering by globalFilter and send the results
+            RetrieveQueryData(globalFilter, "oferta_academica", "nid", "ASC").then((queryData) => {
+              var text = `No pude encontrar información para la búsqueda que hiciste. ¡Podés volver a consultarme más adelante!`;
+              if (queryData.length > 0) {
+                var stringArr = [];
+                text = `Encontré los siguientes resultados:\n`;
+            
+                // Use a promise to wait for all iterations to complete
+                let promises = queryData.map((data) => {
+                  return new Promise((resolve) => {
+  
+                    var matTxt = `\n${data.materia}:\n`
+                    var comText = `- ${data.catedra} -> ${data.dia} `;
+                    if (data.inicio) {
+                      comText += `de ${data.inicio} a ${data.fin}`;
+                    };
+                    
+                    comText += ` | Comisión: ${data.comision}\n`;
+                    
+                    if (!stringArr.includes(data.materia)) {
+                      stringArr.push(data.materia);
+                      text += matTxt;
+                    };
+  
+                    text += comText;
+  
+                    resolve(); // Resolve the promise for each item
+                  });
                 });
-              });
-          
-              // Wait for all promises to resolve before sending the message
-              Promise.all(promises).then(() => {
+            
+                // Wait for all promises to resolve before sending the message
+                Promise.all(promises).then(() => {
+                  SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
+                    finishCom(+numFiltered, business_phone_number_id);
+                  }); // Send the message after all data is processed
+                  ReadMessage(business_phone_number_id, message?.id);
+                });
+              } else {
                 SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
                   finishCom(+numFiltered, business_phone_number_id);
-                }); // Send the message after all data is processed
+                }); // Send the message if no data found
                 ReadMessage(business_phone_number_id, message?.id);
-              });
-            } else {
-              SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
-                finishCom(+numFiltered, business_phone_number_id);
-              }); // Send the message if no data found
-              ReadMessage(business_phone_number_id, message?.id);
-            }
-          });
-          break;
-        default:
-          //TO DO: Cualquier tipo de mensaje que no sea el esperado deberíamos responderlo con que no se entendió y volviendo a enviar las opciones iniciales. No debería pasar igualmente.
-          //SendTextMessage();
-          ReadMessage(business_phone_number_id, message?.id);
-          break;
-      };
+              }
+            });
+            break;
+          default:
+            //TO DO: Cualquier tipo de mensaje que no sea el esperado deberíamos responderlo con que no se entendió y volviendo a enviar las opciones iniciales. No debería pasar igualmente.
+            //SendTextMessage();
+            ReadMessage(business_phone_number_id, message?.id);
+            break;
+        };
+    }
   }
 
   res.sendStatus(200);
@@ -512,7 +584,7 @@ app.post("/", async (req, res) => {
 
 async function SendBienvenida(num, business) {
   cleanVars();
-  var txt = "Hola! soy Fsoquer, tu bot amigo de sociales. ¿Con qué te puedo ayudar hoy?\n\n*Recordá que si en algún momento te trabás, siempre podés empezar devuelta la conversación saludándome con un hola!*";
+  var txt = "¡Hola! soy Fsoquer, tu bot amigo de sociales. ¿Con qué te puedo ayudar hoy?\n\n*Recordá que si en algún momento te trabás, podés empezar devuelta la conversación saludándome con un ¡Hola!*";
   await SendListMessage(txt, ["1", "2", "3", "4"], num, business, "templates");
 }
 
@@ -566,7 +638,6 @@ async function SendButtonsMessage(bodyText, options, destNumber, businessNumber)
 
 async function SendListMessage(bodyText, options, destNumber, businessNumber, table, groupby) {
   console.log("Sending List Message");
-  //var index = 0;
 
   const data = {
     messaging_product: "whatsapp",
@@ -600,9 +671,16 @@ async function SendListMessage(bodyText, options, destNumber, businessNumber, ta
             templates.forEach(template => {
               console.log(`${template.id}: ${template.description ?? template.materia} | tipo: ${template?.type ?? template.comision}`);
               
+              var title = "";
+              if (template?.description != null) {
+                title = template?.description;
+              } else {
+                title = lastOptionsSent == "Cátedra" ? template.catedra : template.materia;
+              }
+
               var obj = {
                 id: template.nid.toString(),
-                title: template?.description ?? template.materia.slice(0,24)
+                title: title.slice(0,24)
               };
     
               data.interactive.action.sections[0].rows.push(obj);
@@ -628,6 +706,11 @@ async function SendListMessage(bodyText, options, destNumber, businessNumber, ta
       data.interactive.action.sections[0].rows.sort((a, b) => {
         return a.id - b.id;
       });
+
+      var i = data.interactive.action.sections[0].rows.findIndex(r => r.id == "123");
+      if (i > -1) {
+        data.interactive.action.sections[0].rows[i].description = "Solo aplica a Mesas de Examen";
+      };
       console.log(`About to post data ${JSON.stringify(data)}`);
       SendMessage(businessNumber, data);
     });
@@ -735,8 +818,8 @@ function normalizarQueryValue(str) {
 function finishCom(num, business) {
   cleanVars();
   //Vuelvo a arrancar la conversación pero sin la bienvenida, sino preguntando si necesita algo más.
-  var txt = "Te puedo ayudar con algo más?"
-  SendListMessage(txt, ["1", "2", "3", "4"], num, business, "templates");
+  var txt = "¿Te puedo ayudar con algo más?"
+  SendListMessage(txt, ["1", "2", "3", "4", "9"], num, business, "templates");
 }
 
 function cleanVars() {
