@@ -1,0 +1,343 @@
+nid,materia,catedra,comision,dia,inicio,fin
+101,Teorías y Prácticas de la Comunicación 1,SANTAGADA,16,Sábado,09:00,11:00
+101,Teorías y Prácticas de la Comunicación 1,SANTAGADA,17,Sábado,11:00,13:00
+101,Teorías y Prácticas de la Comunicación 1,SANTAGADA,Teo 09,Martes,11:00,13:00
+101,Teorías y Prácticas de la Comunicación 1,SANTAGADA,Teo 19,Martes,19:00,21:00
+102,Semiótica 1,CARLON,Teo 29,Martes,19:00,21:00
+102,Semiótica 1,CARLON,Teo 39,Jueves,11:00,13:00
+102,Semiótica 1,KOLDOBSKY,60,Viernes,11:00,13:00
+102,Semiótica 1,KOLDOBSKY,Teo 59,Martes,19:00,21:00
+102,Semiótica 1,KOLDOBSKY,Teo 69,Viernes,09:00,11:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,01,Lunes,11:00,13:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,02,Martes,11:00,13:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,03,Martes,13:00,15:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,04,Martes,17:00,19:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,05,Miércoles,17:00,19:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,06,Viernes,09:00,11:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,07,Viernes,13:00,15:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,08,Viernes,19:00,21:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,Teo 09,Miércoles,19:00,21:00
+103,Principales Corrientes del Pensamiento Contemporáneo,GUTIERREZ,Teo 19,Viernes,11:00,13:00
+104,Metodología y Técnicas de la Investigación Social,SALVIA,01,Martes,09:00,11:00
+104,Metodología y Técnicas de la Investigación Social,SALVIA,04,Martes,13:00,15:00
+104,Metodología y Técnicas de la Investigación Social,SALVIA,08,Miércoles,11:00,13:00
+104,Metodología y Técnicas de la Investigación Social,SALVIA,10,Miércoles,15:00,17:00
+104,Metodología y Técnicas de la Investigación Social,SALVIA,11,Jueves,09:00,11:00
+104,Metodología y Técnicas de la Investigación Social,SALVIA,12,Viernes,09:00,11:00
+104,Metodología y Técnicas de la Investigación Social,SALVIA,13,Viernes,19:00,21:00
+104,Metodología y Técnicas de la Investigación Social,SALVIA,Teo 09,Martes,11:00,13:00
+105,Historia Social General,PASINO,01,Lunes,13:00,15:00
+105,Historia Social General,PASINO,02,Lunes,13:00,15:00
+105,Historia Social General,PASINO,03,Lunes,15:00,17:00
+105,Historia Social General,PASINO,04,Miércoles,15:00,17:00
+105,Historia Social General,PASINO,05,Miércoles,19:00,21:00
+105,Historia Social General,PASINO,06,Lunes,09:00,11:00
+105,Historia Social General,PASINO,Teo 09,Lunes,11:00,13:00
+105,Historia Social General,PASINO,Teo 19,Miércoles,17:00,19:00
+106,Antropología Social y Cultural,HALPERN,21,Martes,11:00,13:00
+106,Antropología Social y Cultural,HALPERN,22,Martes,13:00,15:00
+106,Antropología Social y Cultural,HALPERN,23,Martes,17:00,19:00
+106,Antropología Social y Cultural,HALPERN,24,Martes,21:00,23:00
+106,Antropología Social y Cultural,HALPERN,25,Jueves,09:00,11:00
+106,Antropología Social y Cultural,HALPERN,26,Jueves,17:00,19:00
+106,Antropología Social y Cultural,HALPERN,27,Jueves,19:00,21:00
+106,Antropología Social y Cultural,HALPERN,Teo 29,Martes,09:00,11:00
+106,Antropología Social y Cultural,HALPERN,Teo 39,Martes,19:00,21:00
+107,Taller de Expresión 1,SETTON,31,Lunes,11:00,13:00
+107,Taller de Expresión 1,SETTON,32,Lunes,17:00,19:00
+107,Taller de Expresión 1,SETTON,33,Martes,09:00,11:00
+107,Taller de Expresión 1,SETTON,34,Martes,19:00,21:00
+107,Taller de Expresión 1,SETTON,35,Miércoles,11:00,13:00
+107,Taller de Expresión 1,SETTON,36,Jueves,15:00,17:00
+107,Taller de Expresión 1,SETTON,Teo 39,Lunes,09:00,11:00
+107,Taller de Expresión 1,SETTON,Teo 49,Lunes,19:00,21:00
+107,Taller de Expresión 1,VERNINO,02,Lunes,15:00,17:00
+107,Taller de Expresión 1,VERNINO,03,Lunes,17:00,19:00
+107,Taller de Expresión 1,VERNINO,07,Jueves,09:00,11:00
+107,Taller de Expresión 1,VERNINO,Teo 09,Viernes,09:00,11:00
+107,Taller de Expresión 1,VERNINO,Teo 19,Lunes,19:00,21:00
+108,Taller de Radiofonía (módulo de radio),ALIVERTI,20,Lunes,13:00,15:00
+108,Taller de Radiofonía (módulo de radio),ALIVERTI,21,Lunes,15:00,17:00
+108,Taller de Radiofonía (módulo de radio),ALIVERTI,22,Martes,09:00,11:00
+108,Taller de Radiofonía (módulo de radio),ALIVERTI,23,Martes,11:00,13:00
+108,Taller de Radiofonía (módulo de radio),ALIVERTI,24,Miércoles,09:00,11:00
+108,Taller de Radiofonía (módulo de radio),ALIVERTI,25,Miércoles,11:00,13:00
+108,Taller de Radiofonía (módulo de radio),ALIVERTI,26,Jueves,15:00,17:00
+108,Taller de Radiofonía (módulo de radio),ALIVERTI,Teo 29,Lunes,17:00,19:00
+108,Taller de Radiofonía (módulo de radio),BOSETTI,01,Lunes,19:00,21:00
+108,Taller de Radiofonía (módulo de radio),BOSETTI,05,Miércoles,15:00,17:00
+108,Taller de Radiofonía (módulo de radio),BOSETTI,Teo 09,Lunes,17:00,19:00
+109,Historia Social Argentina y Latinoamericana,PELAZAS,11,Lunes,09:00,11:00
+109,Historia Social Argentina y Latinoamericana,PELAZAS,12,Martes,19:00,21:00
+109,Historia Social Argentina y Latinoamericana,PELAZAS,13,Miércoles,17:00,19:00
+109,Historia Social Argentina y Latinoamericana,PELAZAS,14,Jueves,17:00,19:00
+109,Historia Social Argentina y Latinoamericana,PELAZAS,15,Viernes,09:00,11:00
+109,Historia Social Argentina y Latinoamericana,PELAZAS,Teo 29,Jueves,19:00,21:00
+110,Teorías y Prácticas de la Comunicación 2 (Comunicación y cultura),CONTURSI,21,Martes,09:00,11:00
+110,Teorías y Prácticas de la Comunicación 2 (Comunicación y cultura),CONTURSI,23,Martes,19:00,21:00
+110,Teorías y Prácticas de la Comunicación 2 (Comunicación y cultura),CONTURSI,24,Miércoles,17:00,19:00
+110,Teorías y Prácticas de la Comunicación 2 (Comunicación y cultura),CONTURSI,25,Miércoles,21:00,23:00
+110,Teorías y Prácticas de la Comunicación 2 (Comunicación y cultura),CONTURSI,26,Jueves,17:00,19:00
+110,Teorías y Prácticas de la Comunicación 2 (Comunicación y cultura),CONTURSI,27,Viernes,17:00,19:00
+110,Teorías y Prácticas de la Comunicación 2 (Comunicación y cultura),CONTURSI,Teo 29,Martes,11:00,13:00
+110,Teorías y Prácticas de la Comunicación 2 (Comunicación y cultura),CONTURSI,Teo 39,Miércoles,19:00,21:00
+111,Elementos de Economía y Concepciones del Desarrollo,EX CÁRCAMO,21,Miércoles,09:00,11:00
+111,Elementos de Economía y Concepciones del Desarrollo,EX CÁRCAMO,22,Miércoles,11:00,13:00
+111,Elementos de Economía y Concepciones del Desarrollo,EX CÁRCAMO,23,Miércoles,17:00,19:00
+111,Elementos de Economía y Concepciones del Desarrollo,EX CÁRCAMO,24,Miércoles,19:00,21:00
+111,Elementos de Economía y Concepciones del Desarrollo,EX CÁRCAMO,25,Jueves,17:00,19:00
+111,Elementos de Economía y Concepciones del Desarrollo,EX CÁRCAMO,26,Viernes,17:00,19:00
+111,Elementos de Economía y Concepciones del Desarrollo,EX CÁRCAMO,Teo 29,Lunes,19:00,21:00
+111,Elementos de Economía y Concepciones del Desarrollo,EX CÁRCAMO,Teo 39,Viernes,11:00,13:00
+112,Semiótica 2 (Semiótica de los medios),CENTOCCHI,21,Martes,17:00,19:00
+112,Semiótica 2 (Semiótica de los medios),CENTOCCHI,22,Martes,19:00,21:00
+112,Semiótica 2 (Semiótica de los medios),CENTOCCHI,23,Miércoles,11:00,13:00
+112,Semiótica 2 (Semiótica de los medios),CENTOCCHI,24,Martes,09:00,11:00
+112,Semiótica 2 (Semiótica de los medios),CENTOCCHI,25,Martes,11:00,13:00
+112,Semiótica 2 (Semiótica de los medios),CENTOCCHI,26,Viernes,19:00,21:00
+112,Semiótica 2 (Semiótica de los medios),CENTOCCHI,27,Viernes,17:00,19:00
+112,Semiótica 2 (Semiótica de los medios),CENTOCCHI,Teo 29,Jueves,11:00,13:00
+112,Semiótica 2 (Semiótica de los medios),CENTOCCHI,Teo 39,Jueves,19:00,21:00
+113,Derecho a la Información,LORETI,01,Lunes,17:00,19:00
+113,Derecho a la Información,LORETI,02,Martes,07:00,09:00
+113,Derecho a la Información,LORETI,03,Martes,11:00,13:00
+113,Derecho a la Información,LORETI,04,Martes,11:00,13:00
+113,Derecho a la Información,LORETI,05,Miércoles,11:00,13:00
+113,Derecho a la Información,LORETI,06,Miércoles,19:00,21:00
+113,Derecho a la Información,LORETI,07,Jueves,17:00,19:00
+113,Derecho a la Información,LORETI,08,Viernes,11:00,13:00
+113,Derecho a la Información,LORETI,10,Viernes,13:00,15:00
+113,Derecho a la Información,LORETI,Teo 09,Lunes,19:00,21:00
+113,Derecho a la Información,LORETI,Teo 19,Martes,09:00,11:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,01,Lunes,17:00,19:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,02,Lunes,17:00,19:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,03,Lunes,17:00,19:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,04,Lunes,21:00,23:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,05,Martes,11:00,13:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,06,Martes,13:00,15:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,07,Martes,17:00,19:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,08,Miércoles,09:00,11:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,10,Jueves,11:00,13:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,11,Jueves,17:00,19:00
+114,Historia General de los Medios y Sistemas de Comunicación,REY, ANA LIA,Teo 09,Lunes,19:00,21:00
+115,Taller de Introducción a la Informática, Telem ática y al Procesamiento de Datos,BECERRA,01,Martes,19:00,21:00
+115,Taller de Introducción a la Informática, Telem ática y al Procesamiento de Datos,BECERRA,03,Viernes,15:00,17:00
+115,Taller de Introducción a la Informática, Telem ática y al Procesamiento de Datos,BECERRA,Teo 09,Lunes,19:00,21:00
+117,Psicología y Comunicación,KAUFMAN,21,Lunes,15:00,17:00
+117,Psicología y Comunicación,KAUFMAN,22,Lunes,19:00,21:00
+117,Psicología y Comunicación,KAUFMAN,23,Jueves,09:00,11:00
+117,Psicología y Comunicación,KAUFMAN,Teo 29,Lunes,17:00,19:00
+118,Teorías y Prácticas de la Comunicación III (La Investigación en Comunicación),ROME,01,Martes,17:00,19:00
+118,Teorías y Prácticas de la Comunicación III (La Investigación en Comunicación),ROME,02,Miércoles,17:00,19:00
+118,Teorías y Prácticas de la Comunicación III (La Investigación en Comunicación),ROME,03,Miércoles,19:00,21:00
+118,Teorías y Prácticas de la Comunicación III (La Investigación en Comunicación),ROME,04,Jueves,11:00,13:00
+118,Teorías y Prácticas de la Comunicación III (La Investigación en Comunicación),ROME,05,Jueves,19:00,21:00
+118,Teorías y Prácticas de la Comunicación III (La Investigación en Comunicación),ROME,06,Viernes,09:00,11:00
+118,Teorías y Prácticas de la Comunicación III (La Investigación en Comunicación),ROME,07,Viernes,17:00,19:00
+118,Teorías y Prácticas de la Comunicación III (La Investigación en Comunicación),ROME,Teo 09,Lunes,19:00,21:00
+118,Teorías y Prácticas de la Comunicación III (La Investigación en Comunicación),ROME,Teo 19,Jueves,09:00,11:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,01,Lunes,09:00,11:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,02,Lunes,17:00,19:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,03,Lunes,19:00,21:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,04,Martes,09:00,11:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,05,Miércoles,11:00,13:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,06,Miércoles,17:00,19:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,07,Miércoles,19:00,21:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,08,Jueves,11:00,13:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,10,Jueves,19:00,21:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,11,Viernes,19:00,21:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,Teo 09,Martes,11:00,13:00
+119,Políticas y Planificación de la Comunicación,MASTRINI,Teo 19,Martes,19:00,21:00
+120,Seminario de Diseño Gráfico y Publicidad,VARELA,01,Lunes,11:00,13:00
+120,Seminario de Diseño Gráfico y Publicidad,VARELA,02,Miércoles,17:00,19:00
+120,Seminario de Diseño Gráfico y Publicidad,VARELA,03,Miércoles,21:00,23:00
+120,Seminario de Diseño Gráfico y Publicidad,VARELA,04,Jueves,17:00,19:00
+120,Seminario de Diseño Gráfico y Publicidad,VARELA,05,Viernes,17:00,19:00
+120,Seminario de Diseño Gráfico y Publicidad,VARELA,Teo 09,Miércoles,19:00,21:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,21,Lunes,19:00,21:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,23,Martes,19:00,21:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,25,Miércoles,17:00,19:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,26,Miércoles,17:00,19:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,27,Miércoles,17:00,19:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,28,Miércoles,17:00,19:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,30,Jueves,17:00,19:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,31,Jueves,19:00,21:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,32,Viernes,09:00,11:00
+121,Seminario de Cultura Popular y Cultura Masiva,ALABARCES,Teo 29,Miércoles,19:00,21:00
+122,Seminario de Informática y Sociedad,RODRÍGUEZ,21,Miércoles,19:00,21:00
+122,Seminario de Informática y Sociedad,RODRÍGUEZ,22,Jueves,09:00,11:00
+122,Seminario de Informática y Sociedad,RODRÍGUEZ,23,Jueves,11:00,13:00
+122,Seminario de Informática y Sociedad,RODRÍGUEZ,24,Jueves,15:00,17:00
+122,Seminario de Informática y Sociedad,RODRÍGUEZ,25,Jueves,17:00,19:00
+122,Seminario de Informática y Sociedad,RODRÍGUEZ,26,Jueves,17:00,19:00
+122,Seminario de Informática y Sociedad,RODRÍGUEZ,Teo 29,Martes,19:00,21:00
+123,Taller de Expresión III (Multimedios),EL JABER,T/P 14,Lunes,19:00,23:00
+123,Taller de Expresión III (Multimedios),EL JABER,T/P 16,Martes,15:00,19:00
+123,Taller de Expresión III (Multimedios),EL JABER,T/P 17,Martes,19:00,23:00
+123,Taller de Expresión III (Multimedios),EL JABER,T/P 20,Viernes,09:00,13:00
+124,Taller de Comunicación Comunitaria,CARDOSO,T/P 01,Lunes,17:00,20:00
+125,Taller de Comunicación Publicitaria,ROSENTHAL,T/P 01 Publicid,Martes,19:00,23:00
+125,Taller de Comunicación Publicitaria,ROSENTHAL,T/P 02 Publicid,Martes,09:00,13:00
+125,Taller de Comunicación Publicitaria,ROSENTHAL,T/P 03 Publicid,Miércoles,16:00,20:00
+125,Taller de Comunicación Publicitaria,ROSENTHAL,T/P 04 Publicid,Miércoles,19:00,23:00
+125,Taller de Comunicación Publicitaria,ROSENTHAL,T/P 05 Publicid,Jueves,19:00,23:00
+126,Taller de Comunicación Periodística,PÉREZ,T/P 01 Periodis,Martes,10:00,14:00
+126,Taller de Comunicación Periodística,PÉREZ,T/P 02 Periodis,Miércoles,17:00,21:00
+11960,El neoliberalismo y yo: sujeto, tiempo y política,RÉ CAROLINA,T/P 01 (TIF),Martes,10:00,13:00
+12218,"Datos y género: la transversalización de la perspectiva de género en la recolección, la producción y el análisis de los datos para
+políticas públicas basadas en evidencia",GARCÍA,T/P 01,Lunes,17:00,21:00
+21824,La Ecología en disputa: Una mirada hacia el Estado y los movimientos sociales desde la Ecología Política,PERELMUTER,T/P 01,Sábado,10:00,14:00
+22005,"Energía y Desarrollo - Desafíos energéticos:
+¿cuánto sabemos les politólogues de Vaca Muerta y Energías Renovables?",CARBAJALES,T/P 01,Viernes,15:00,19:00
+22316,"Estado y Políticas Públicas con Perspectiva de Género.
+Relecturas desde la Teoría Feminista",SACOMANI,T/P 01,Lunes,14:00,18:00
+22407,Seminario TIF: Abordaje de la inteligencia artificial: guía para una apropiación consciente de la herramienta,BABIO,T/P 01,Miércoles,19:00,22:00
+22408,"Seminario TIF: Música y construcción de identidades sociales en América
+Latina",GALLEGO,T/P 01,Martes,20:00,23:00
+22409,Seminario TIF: Comunicación Política y Opinión Pública,GÓMEZ,T/P 01,Sábado,10:00,13:00
+22410,"Seminario TIF: Televisión: programación, streaming y consu mo.
+Herramientas teóricas y metodo lógicas para la elaboración del TIF",HERAM,T/P 01,Viernes,17:00,20:00
+22411,Seminario TIF: Acceso, uso y apropiación de las TIC en organizaciones sociales y educativas para la acción colectiva,ISELLA,T/P 01,Martes,17:00,20:00
+22411,Seminario TIF: Acceso, uso y apropiación de las TIC en organizaciones sociales y educativas para la acción colectiva,ISELLA,T/P 02,Jueves,09:00,12:00
+22412,Seminario TIF: De los científicos de datos a los influencers: una exploración en clave política de los saberes expertos de la escena comunicación al actual,MÓNACO,T/P 01,Viernes,09:00,12:00
+22413,Fútbol y (medios de) Comunicación,PALMA,T/P 01,Sábado,10:00,13:00
+22414,Seminario TIF: Análisis de datos, desigualdades digitales y sociales en el nuevo capitalismo informacional,PLA,T/P 01,Miércoles,09:00,12:00
+22415,"Seminario TIF: Efecto dominó. Producciones transmedia
+de no ficción",PONFERRADA,T/P 01,Miércoles,19:00,22:00
+22417,Seminario TIF: Política y redes sociales,SLIMOVICH,T/P 01,Lunes,18:00,21:00
+22418,Seminario TIF: Intervención integral de la comunicación en las instituciones,VARGAS,T/P 01,Jueves,18:00,21:00
+22419,"Fronteras, otredades y territorios.
+Reflexiones y metodologías de estudio de las representacion es de la alteridad",VÁZQUEZ, MAURO,T/P 01 (TIF),Jueves,10:00,13:00
+22420,Seminario TIF: Culturas afectivas, subjetividades y comunicación,VILLALBA,T/P 01,Lunes,17:00,20:00
+22421,Seminario TIF: comunicación política y las fake news,ZANARINI,T/P 01,Jueves,09:00,12:00
+11601,Sociología de la Opinión Pública,DE ANGELIS,T/P 01,Lunes,17:00,21:00
+11903,Sociología ambiental,MERLINSKY,T/P 01,Jueves,17:00,21:00
+10907,Relaciones de Trabajo y Derechos Humanos en la Argentina,CIEZA,01,Jueves,21:00,23:00
+10907,Relaciones de Trabajo y Derechos Humanos en la Argentina,CIEZA,Teo 09,Jueves,19:00,21:00
+11720,"Relaciones
+del Trabajo y proceso de Innovación Tecnoló gica",GABRIEL,T/P 01,Lunes,17:00,21:00
+11723,Mobbing Laboral. Su abordaje y consecuencias,ZURITA,T/P 01,Lunes,19:00,23:00
+22322,"Debates actuales de las relaciones
+del Trabajo en
+sus distintos ámbitos actores y actoras",RODRIGUEZ CERANTONIO, HUMBERTO,T/P 01,Miércoles,19:00,23:00
+22405,"Experiencias de mujeres en la acción política-sindical.
+Argentina siglos XX y XXI",FACIO,T/P 01,Lunes,19:00,23:00
+991,Idioma Inglés - Nivel I,PAMPILLO,T/P 11,Martes,09:00,13:00
+991,Idioma Inglés - Nivel I,PAMPILLO,T/P 12,Martes,15:00,19:00
+991,Idioma Inglés - Nivel I,PAMPILLO,T/P 13,Jueves,17:00,21:00
+991,Idioma Inglés - Nivel I,PAMPILLO,T/P 14,Viernes,19:00,23:00
+991,Idioma Inglés - Nivel I,SALCEEK,T/P 01,Miércoles,09:00,13:00
+991,Idioma Inglés - Nivel I,SALCEEK,T/P 02,Viernes,09:00,13:00
+991,Idioma Inglés - Nivel I,SALCEEK,T/P 03,Lunes,17:00,21:00
+991,Idioma Inglés - Nivel I,SALCEEK,T/P 04,Miércoles,17:00,21:00
+992,Idioma Inglés - Nivel II,PAMPILLO,T/P 11,Martes,09:00,13:00
+992,Idioma Inglés - Nivel II,PAMPILLO,T/P 12,Miércoles,13:00,17:00
+992,Idioma Inglés - Nivel II,PAMPILLO,T/P 13,Lunes,17:00,21:00
+992,Idioma Inglés - Nivel II,PAMPILLO,T/P 14,Martes,19:00,23:00
+992,Idioma Inglés - Nivel II,SALCEEK,T/P 01,Jueves,09:00,13:00
+992,Idioma Inglés - Nivel II,SALCEEK,T/P 02,Miércoles,15:00,19:00
+992,Idioma Inglés - Nivel II,SALCEEK,T/P 03,Martes,13:00,17:00
+992,Idioma Inglés - Nivel II,SALCEEK,T/P 04,Viernes,17:00,21:00
+993,Idioma Inglés - Nivel III,PAMPILLO,T/P 11,Jueves,15:00,19:00
+993,Idioma Inglés - Nivel III,PAMPILLO,T/P 12,Jueves,17:00,21:00
+993,Idioma Inglés - Nivel III,SALCEEK,T/P 01,Jueves,09:00,13:00
+993,Idioma Inglés - Nivel III,SALCEEK,T/P 02,Martes,17:00,21:00
+993,Idioma Inglés - Nivel III,SALCEEK,T/P 03,Martes,09:00,13:00
+993,Idioma Inglés - Nivel III,SALCEEK,T/P 04,Lunes,15:00,19:00
+994,Idioma Francés - Nivel I,DORIN,T/P 01,Martes,13:00,17:00
+994,Idioma Francés - Nivel I,DORIN,T/P 02,Miércoles,15:00,19:00
+994,Idioma Francés - Nivel I,DORIN,T/P 03,Viernes,09:00,13:00
+995,Idioma Francés - Nivel II,DORIN,T/P 01,Miércoles,09:00,13:00
+995,Idioma Francés - Nivel II,DORIN,T/P 02,Miércoles,13:00,17:00
+996,Idioma Francés - Nivel III,DORIN,T/P 01,Lunes,19:00,23:00
+996,Idioma Francés - Nivel III,DORIN,T/P 02,Viernes,13:00,17:00
+997,Idioma Italiano - Nivel I,BIONDI,T/P 01,Viernes,11:00,15:00
+997,Idioma Italiano - Nivel I,BIONDI,T/P 02,Martes,15:00,19:00
+998,Idioma Italiano - Nivel II,BIONDI,T/P 01,Sábado,09:00,13:00
+998,Idioma Italiano - Nivel II,BIONDI,T/P 02,Lunes,09:00,13:00
+999,Idioma Italiano - Nivel III,BIONDI,T/P 01,Viernes,15:00,19:00
+999,Idioma Italiano - Nivel III,BIONDI,T/P 02,Jueves,11:00,15:00
+10819,Situaciones socio- ambientales,MAIORANA,T/P 01,Jueves,17:00,21:00
+12408,Seminario TIF: El rol del agente de prensa como gestor cultural,COBAS,T/P 01,Martes,19:00,22:00
+12413,Seminario TIF: Estudiar la ciudad. Herramientas teóricas y metodológicas para la elaboración de TIF sobre procesos urbano-territoriales desde una mirada comunicacional,GONZALEZ REDONDO,T/P 01,Jueves,10:00,13:00
+12417,"Seminario TIF: Comunicación y salud: Medios,
+Políticas y Territorios.
+Una mirada introductoria en el campo",LUPI,T/P 01,Jueves,13:00,16:00
+127,Teoríassobre el Periodismo,CASINI,01,Martes,17:00,19:00
+127,Teoríassobre el Periodismo,CASINI,Teo 09,Martes,19:00,21:00
+128,Planificación de la Actividad Periodistica I,EX- CAMPOLONGO,01,Miércoles,11:00,13:00
+128,Planificación de la Actividad Periodistica I,EX- CAMPOLONGO,02,Jueves,19:00,21:00
+128,Planificación de la Actividad Periodistica I,EX- CAMPOLONGO,03,Sábado,11:00,13:00
+128,Planificación de la Actividad Periodistica I,EX- CAMPOLONGO,Teo 09,Martes,19:00,21:00
+129,Planificación de la Actividad Periodistica II,LUCHESSI,01,Martes,19:00,21:00
+129,Planificación de la Actividad Periodistica II,LUCHESSI,02,Miércoles,09:00,11:00
+129,Planificación de la Actividad Periodistica II,LUCHESSI,03,Lunes,19:00,21:00
+129,Planificación de la Actividad Periodistica II,LUCHESSI,Teo 09,Jueves,19:00,21:00
+130,Diseño de la Información Periodística,PAUWELS,01,Lunes,17:00,19:00
+130,Diseño de la Información Periodística,PAUWELS,02,Jueves,19:00,21:00
+130,Diseño de la Información Periodística,PAUWELS,Teo 09,Lunes,19:00,21:00
+131,"Historia del Arte y su Relación con
+los Medios Masivos de Comunicación",FORSTER/KAUFM AN,T/P 01,Martes,17:00,21:00
+132,Taller de Orientación en Periodismo,EX BAIGORRIA,T/P 03 Recurs,N/D,,
+137,Análisis Institucional,GHITIA,11,Martes,19:00,21:00
+137,Análisis Institucional,GHITIA,Teo 19,Martes,17:00,19:00
+139,Metodología del Planeamiento en Comunicación: El Proceso de la Planificación,ZUCCHELLI,01,Jueves,09:00,11:00
+139,Metodología del Planeamiento en Comunicación: El Proceso de la Planificación,ZUCCHELLI,02,Jueves,17:00,19:00
+139,Metodología del Planeamiento en Comunicación: El Proceso de la Planificación,ZUCCHELLI,Teo 09,Jueves,19:00,21:00
+140,Taller de Orientación en Comunicación y Procesos Educativos,MINZI,T/P 03 Recurs,N/D,,
+141,Comercialización,COSTA,01,Lunes,17:00,19:00
+141,Comercialización,COSTA,02,Lunes,21:00,23:00
+141,Comercialización,COSTA,03,Lunes,21:00,23:00
+141,Comercialización,COSTA,04,Viernes,13:00,15:00
+141,Comercialización,COSTA,Teo 09,Lunes,19:00,21:00
+143,Planificación de Medios,SARDEGNA,T/P 01,Miércoles,19:00,23:00
+143,Planificación de Medios,SARDEGNA,T/P 02,Jueves,19:00,23:00
+144,Técnicas de Investigación de Opinión Pública y Mercado,EX PETRACCI,01,Lunes,15:00,17:00
+144,Técnicas de Investigación de Opinión Pública y Mercado,EX PETRACCI,02,Lunes,19:00,21:00
+144,Técnicas de Investigación de Opinión Pública y Mercado,EX PETRACCI,03,Martes,09:00,11:00
+144,Técnicas de Investigación de Opinión Pública y Mercado,EX PETRACCI,04,Jueves,17:00,19:00
+144,Técnicas de Investigación de Opinión Pública y Mercado,EX PETRACCI,Teo 09,Lunes,17:00,19:00
+145,Taller de Orientación en Opinión Publica y Publicidad,SARDEGNA,T/P 06 Recurs,N/D,,
+146,Promoción de Actividades Comunitarias,AMATI,T/P 01,Lunes,17:00,21:00
+147,Taller de Orientación en Comunicación y Promoción Comunitaria,EX-MAGAROLA,T/P 03 Recurs,N/D,,
+148,Teorías del Estado y la Planificación,BULLA,01,Lunes,17:00,19:00
+148,Teorías del Estado y la Planificación,BULLA,Teo 09,Lunes,19:00,21:00
+149,Legislación Comparada,AGUIAR,01,Martes,17:00,19:00
+149,Legislación Comparada,AGUIAR,Teo 09,Martes,19:00,21:00
+153,Economía de la Información,HERNANDEZ,01,Lunes,19:00,21:00
+153,Economía de la Información,HERNANDEZ,Teo 09,Lunes,17:00,19:00
+154,Taller de Orienta ción en Políticas y Planificación de la Comunicación,EX URANGA,T/P 04 Recurs,N/D,,
+162,"Informática y
+Relaciones Sociales: Lazos Sociales y Virtuales",CAFASSI,T/P 01,Viernes,09:00,13:00
+221,Comunicación y Educación,CARLI,T/P 01,Lunes,16:00,19:00
+221,Comunicación y Educación,CARLI,T/P 02,Lunes,19:00,22:00
+230,Campañas Publicitarias,PONFERRADA,01,Jueves,19:00,21:00
+230,Campañas Publicitarias,PONFERRADA,02,Miércoles,09:00,11:00
+230,Campañas Publicitarias,PONFERRADA,03,Jueves,19:00,21:00
+230,Campañas Publicitarias,PONFERRADA,Teo 09,Viernes,19:00,21:00
+335,"Cultura para
+la Paz y Derechos Humanos",PEREZ ESQUIVEL,01,Martes,19:00,21:00
+335,"Cultura para
+la Paz y Derechos Humanos",PEREZ ESQUIVEL,02,Martes,15:00,17:00
+335,"Cultura para
+la Paz y Derechos Humanos",PEREZ ESQUIVEL,03,Martes,19:00,21:00
+335,"Cultura para
+la Paz y Derechos Humanos",PEREZ ESQUIVEL,04,Viernes,17:00,19:00
+335,"Cultura para
+la Paz y Derechos Humanos",PEREZ ESQUIVEL,Teo 09,Martes,17:00,19:00
+511,"Sociología de la Educación.
+Teoría y Práctica de la Educación Contemporánea",GLUZ,01,Martes,11:00,13:00
+511,"Sociología de la Educación.
+Teoría y Práctica de la Educación Contemporánea",GLUZ,02,Martes,11:00,13:00
+511,"Sociología de la Educación.
+Teoría y Práctica de la Educación Contemporánea",GLUZ,03,Martes,11:00,13:00
+511,"Sociología de la Educación.
+Teoría y Práctica de la Educación Contemporánea",GLUZ,Teo 09,Martes,09:00,11:00
+511,"Sociología de la Educación.
+Teoría y Práctica de la Educación Contemporánea",MEO,T/P 41,Miércoles,17:00,21:00
+511,"Sociología de la Educación.
+Teoría y Práctica de la Educación Contemporánea",PLANES,11,Jueves,19:00,21:00
+511,"Sociología de la Educación.
+Teoría y Práctica de la Educación Contemporánea",PLANES,12,Lunes,19:00,21:00
+511,"Sociología de la Educación.
+Teoría y Práctica de la Educación Contemporánea",PLANES,Teo 19,Miércoles,19:00,21:00
