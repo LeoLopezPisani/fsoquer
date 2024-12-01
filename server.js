@@ -234,11 +234,10 @@ app.post("/", async (req, res) => {
   }
 
   if (type === "interactive") {
-    console.log("Processing reply message");
+    console.log("Processing interactive message");
     const numStr = message?.from.toString();
-    //console.log(numStr);
     let numFiltered = numStr.replace("9", "");
-    //console.log(numFiltered);
+
     let msgId = null;
     if (message.interactive.type == "list_reply") {
       msgId = message.interactive.list_reply.id;
@@ -367,7 +366,9 @@ app.post("/", async (req, res) => {
             });
             break;
           case "prox":
+            var limit = 1;
             var unixTs = Math.floor(Date.now() / 1000);
+
             var filters = [
               {
                 column: "tipo",
@@ -380,24 +381,49 @@ app.post("/", async (req, res) => {
                 value: unixTs
               }
             ];
+
+            switch(template.description) {
+              case "Mesas de examen":
+                limit = 2;
+                break;
+              case "Inscripciones a materias":
+                limit = 3;
+                break;
+              case "Cursada":
+                limit = 1;
+                break;
+              case "Cursos de Verano":
+                limit = 2;
+                break;
+            }
   
-            RetrieveQueryData(filters, "fechas", "fecha_inicio", "ASC", 1).then((queryData) => {
+            RetrieveQueryData(filters, "fechas", "fecha_inicio", "ASC", limit).then((queryData) => {
               if(queryData.length == 0) {
                 text = `No tengo todavía fechas próximas de ${template.description}. ¡Podés volver a consultarme cuando quieras!`;
               } else {
-                const data = queryData[0];
-                var inicio = new Date(data.fecha_inicio * 1000);
-                var fin = new Date(data.fecha_fin * 1000);
-    
-                var text = `La próxima fecha importante en términos de ${template.description} es la siguiente:\n\n ${data.descripcion}:\n\n*${inicio.toLocaleDateString("es-AR", dateFormats)}* al *${fin.toLocaleDateString("es-AR", dateFormats)}*`
+                var text = `La próxima fecha importante en términos de *${template.description}* es la siguiente:\n\n`;
+
+                let promises = queryData.map((data) => {
+                  return new Promise((resolve) => {
+                    var inicio = new Date(data.fecha_inicio * 1000);
+                    var fin = new Date(data.fecha_fin * 1000);
+            
+                    var dataText = `- ${data.descripcion} -> ${inicio.toLocaleDateString("es-AR", dateFormats)} al ${fin.toLocaleDateString("es-AR", dateFormats)} de ${data.año}\n\n`;
+                    text += dataText; // Concatenate each result to text
+            
+                    resolve(); // Resolve the promise for each item
+                  });
+                });
+            
+                // Wait for all promises to resolve before sending the message
+                Promise.all(promises).then(() => {
+                  SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
+                    finishCom(+numFiltered, business_phone_number_id);
+                  }); // Send the message after all data is processed
+                  ReadMessage(business_phone_number_id, message?.id);
+                });
               }
-  
-              SendTextMessage(text,+numFiltered, business_phone_number_id).then(() => {
-                finishCom(+numFiltered, business_phone_number_id);
-              });
             });
-  
-            ReadMessage(business_phone_number_id, message?.id);
             break;
           case "filter":
             var i = globalFilter.findIndex(f => f.column == template.filter_type);
@@ -462,21 +488,21 @@ app.post("/", async (req, res) => {
               });
               break;
             }
-  
+            
+            var text = `No pude encontrar información para la búsqueda que hiciste. ¡Podés volver a consultarme más adelante!`;
             //execute the filtering by globalFilter and send the results
             RetrieveQueryData(globalFilter, "fechas", "fecha_inicio", "ASC").then((queryData) => {
-              var text = `No pude encontrar información para la búsqueda que hiciste. ¡Podés volver a consultarme más adelante!`;
               if (queryData.length > 0) {
                 text = `Encontré los siguientes resultados:\n\n`;
             
-                // Use a promise to wait for all iterations to complete
+                // Use a promise to wait for all iterations to complete USAR FOR LOOP PARA PODER ROMPER EL LOOP EN EL IF DE LOS AÑOS
                 let promises = queryData.map((data) => {
                   return new Promise((resolve) => {
                     var inicio = new Date(data.fecha_inicio * 1000);
                     var fin = new Date(data.fecha_fin * 1000);
             
-                    var dataText = `- ${data.descripcion} -> ${inicio.toLocaleDateString("es-AR", dateFormats)} al ${fin.toLocaleDateString("es-AR", dateFormats)}\n\n`;
-                    text = text.concat(dataText); // Concatenate each result to text
+                    var dataText = `- ${data.descripcion} -> ${inicio.toLocaleDateString("es-AR", dateFormats)} al ${fin.toLocaleDateString("es-AR", dateFormats)} de ${data.año}\n\n`;
+                    text += dataText; // Concatenate each result to text
             
                     resolve(); // Resolve the promise for each item
                   });
@@ -490,10 +516,10 @@ app.post("/", async (req, res) => {
                   ReadMessage(business_phone_number_id, message?.id);
                 });
               } else {
-                SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
-                  finishCom(+numFiltered, business_phone_number_id);
-                }); // Send the message if no data found
-                ReadMessage(business_phone_number_id, message?.id);
+                  SendTextMessage(text, +numFiltered, business_phone_number_id).then(() => {
+                    finishCom(+numFiltered, business_phone_number_id);
+                  }); // Send the message if no data found
+                  ReadMessage(business_phone_number_id, message?.id);
               }
             });
             break;
@@ -579,12 +605,32 @@ app.post("/", async (req, res) => {
     }
   }
 
+  if (type == "image") {
+    console.log("Processing image message");
+    const numStr = message?.from.toString();
+    let numFiltered = numStr.replace("9", "");
+
+    var body = `¡Todavía no puedo procesar imágenes! Espero no hayas puesto nada ofensivo, acordate que Terminator y Matrix son cada vez menos ficción :)`;
+    SendTextMessage(body, +numFiltered, business_phone_number_id);
+    ReadMessage(business_phone_number_id, message?.id);
+  };
+
+  if (type == "sticker") {
+    console.log("Processing sticker message");
+    const numStr = message?.from.toString();
+    let numFiltered = numStr.replace("9", "");
+
+    var body = `¡Todavía no puedo procesar stickers! Espero no hayas puesto nada ofensivo, acordate que Terminator y Matrix son cada vez menos ficción :)`;
+    SendTextMessage(body, +numFiltered, business_phone_number_id);
+    ReadMessage(business_phone_number_id, message?.id);
+  };
+
   res.sendStatus(200);
 });
 
 async function SendBienvenida(num, business) {
   cleanVars();
-  var txt = "¡Hola! soy Fsoquer, tu bot amigo de sociales. ¿Con qué te puedo ayudar hoy?\n\n*Recordá que si en algún momento te trabás, podés empezar devuelta la conversación saludándome con un ¡Hola!*";
+  var txt = "¡Hola! soy Fsoquer, tu bot amig@ de sociales. ¿Con qué te puedo ayudar hoy?\n\n*Recordá que si en algún momento te trabás, podés empezar devuelta la conversación saludándome con un ¡Hola!*";
   await SendListMessage(txt, ["1", "2", "3", "4"], num, business, "templates");
 }
 
