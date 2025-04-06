@@ -460,7 +460,7 @@ app.post("/", async (req, res) => {
                 value: val
               }
     
-              globalFilter.push(obj)
+              globalFilter.push(obj);
   
               var body = formatText(template.body);
               if (options.length > 3) {
@@ -489,6 +489,17 @@ app.post("/", async (req, res) => {
               break;
             }
             
+            var i = globalFilter.findIndex(f => f.column == "año");
+            if (i == -1) {
+              var obj = {
+                column: "año",
+                operator: "=",
+                value: new Date().getFullYear()
+              }
+
+              globalFilter.push(obj);
+            }
+
             var text = `No pude encontrar información para la búsqueda que hiciste. ¡Podés volver a consultarme más adelante!`;
             //execute the filtering by globalFilter and send the results
             RetrieveQueryData(globalFilter, "fechas", "fecha_inicio", "ASC").then((queryData) => {
